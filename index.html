@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>דף נחיתה - חממה חכמה</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="./manifest.webmanifest">
+</head>
+<body>
+
+<!-- תפריט ניווט (Navbar) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"> iot חממה חכמה</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-end">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">בית</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">אודות</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">גלריה</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">צור קשר</a>
+          <li class="nav-item" id="datapage">
+            
+          </li>
+          <li class="nav-item">
+            <a><div id="userPanel" style="display: none;">
+              <button id="logoutBtn" class="btn btn-danger" onclick="logout()">Log Out</button>
+            </div></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<!-- דף נחיתה -->
+<div class="landing-page">
+  <h1 class="landing-title opening">ברוכים הבאים לחממה החכמה</h1>
+  <p class="landing-description opening">ניהול ובקרת חממה חכמה מכל מקום ובכל זמן</p>
+  <button type="button" class="btn btn-outline-dark btn-login-center btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">התחברות</button>
+</div>
+
+<div class="center-screen">
+
+<div class="card-header bg-primary text-white rounded" id="hellouser">
+
+</div>
+<div id="userPanel" style="display: none;">
+  <p id="hellouser"></p>
+  <button id="logoutBtn" class="btn btn-danger" onclick="logout()">Log Out</button>
+</div>
+
+</div>
+
+
+
+
+
+<!-- קטע תכונות המערכת -->
+<div class="content-section">
+  <div class="container">
+    <h2 class="text-center mb-5">תכונות המערכת</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">שליטה במערכת ההשקיה</h5>
+            <p class="card-text">בקרה חכמה על זמני השקיה, פתיחה וסגירה אוטומטית של הברזים לפי צורך.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">ניהול טמפרטורה ולחות</h5>
+            <p class="card-text">מעקב והתאמה של הטמפרטורה והלחות בחממה לפי ערכים שהוגדרו מראש.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">התראות בזמן אמת</h5>
+            <p class="card-text">קבלת התראות על חוסר במים, טמפרטורה גבוהה, או לחות נמוכה בצורה חכמה.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-center">
+          <a href="#"><img id="img1" src="https://il.greenhouse-china.com/uploads/202132462/03078003043.jpg" alt=""></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="loginModalLabel">התחברות למערכת</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <form>
+                      <div class="mb-3">
+                          <label for="email" class="form-label">כתובת אימייל</label>
+                          <input type="email" class="form-control" id="emailsignin" placeholder="example@example.com" required>
+                      </div>
+                      <div class="mb-3">
+                          <label for="password" class="form-label">סיסמה</label>
+                          <input type="password" class="form-control" id="passwordsignin" placeholder="הכנס סיסמה" required>
+                      </div>
+                      <button type="button" class="btn btn-success w-100" onclick="login()">התחבר</button>
+                      <div class="mb-3">
+                        <h2 style="display: none;" id="nounce"></h2>
+                      </div>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">סגור</button>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal" > sign up</button>
+
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">sign up</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="mb-3">
+            <label for="email" class="form-label">אימייל</label>
+            <input type="email" class="form-control" id="emailsignup">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">password</label>
+            <input type="password" class="form-control" id="passwordsignup">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">name</label>
+            <input type="text" class="form-control" id="name">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">age</label>
+            <input type="number" class="form-control" id="agesignup">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal" >Close</button>
+        <button type="button" class="btn btn-primary" onclick="signup()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-database-compat.js"></script>
+<script src="app.js"></script>
+<script src="index.js"></script>
+<script>firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    document.getElementById("datapage").innerHTML = `<a class="nav-link" href="data.html">שליטה בחממה</a>`;
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});</script>
+
+
+</body>
+</html>
