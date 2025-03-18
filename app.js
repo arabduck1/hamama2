@@ -217,6 +217,7 @@ starCountRef.on('value', (snapshot) => {
   const data = snapshot.val();
   //updateStarCount(postElement, data);
   document.getElementById("lightreal").textContent = data
+  addlight(data)
 });
 
 var starCountRef = firebase.database().ref('RX/data/temp');
@@ -239,6 +240,7 @@ starCountRef.on('value', (snapshot) => {
   const data = snapshot.val();
   //updateStarCount(postElement, data);
   document.getElementById("humidreal").textContent = data
+  addhumid(data)
 });
 
 
@@ -332,6 +334,22 @@ function addTemperature(temp) {
     tempChart.update();
 }
 
+
+function addlight(light) {
+  const now = new Date().toLocaleTimeString();
+  labels1.push(now);
+  lightData.push(light);
+  if (labels1.length > 10) { labels1.shift(); lightData.shift(); }
+  lightChart.update();
+}
+
+function addhumid(humid) {
+  const now = new Date().toLocaleTimeString();
+  labels2.push(now);
+  humidData.push(humid);
+  if (labels2.length > 10) { labels2.shift(); humidData.shift(); }
+  humidChart.update();
+}
 
 
 
